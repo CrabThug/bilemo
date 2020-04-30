@@ -1,0 +1,12 @@
+App\Entity\User:
+    collectionOperations:
+        get: # nothing more to add if we want to keep the default controller
+            normalization_context: {groups: ['users_list']}
+            security: "object.getClient() == user"
+        post: ~
+    itemOperations:
+        get:
+            security: "object.getClient() == user"
+            security_message: "Sorry, but you are not the boss, it's me."
+            normalization_context: {groups: ['users_details']}
+        delete: ~
