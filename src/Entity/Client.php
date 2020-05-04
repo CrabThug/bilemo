@@ -5,20 +5,24 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ClientRepository")
  */
-class Client
+class Client implements UserInterface
 {
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"users_details"})
      */
     private $id;
 
     /**
+     * @Groups({"users_details"})
      * @ORM\Column(type="string", length=255)
      */
     private $username;
@@ -33,6 +37,8 @@ class Client
      */
     private $users;
 
+    private $roles;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -43,7 +49,7 @@ class Client
         return $this->id;
     }
 
-    public function getUsername(): ?string
+    public function getUsername()
     {
         return $this->username;
     }
@@ -91,10 +97,29 @@ class Client
             $this->users->removeElement($user);
             // set the owning side to null (unless already changed)
             if ($user->getClient() === $this) {
-                $user->setClient(null);
+                $user->setClient(NULL);
             }
         }
 
         return $this;
+    }
+
+    public function getRoles()
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function getSalt()
+    {
+        //
+    }
+
+    public function eraseCredentials()
+    {
+        //
     }
 }
