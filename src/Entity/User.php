@@ -31,7 +31,7 @@ class User
     private $lastname;
 
     /**
-     * @Groups({"users_list", "users_details"})
+     * @Groups({"users_details"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Client", inversedBy="users")
      */
     private $client;

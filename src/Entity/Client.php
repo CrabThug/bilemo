@@ -17,12 +17,12 @@ class Client implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"users_list", "users_details"})
+     * @Groups({"users_details"})
      */
     private $id;
 
     /**
-     * @Groups({"users_list", "users_details"})
+     * @Groups({"users_details"})
      * @ORM\Column(type="string", length=255)
      */
     private $username;
