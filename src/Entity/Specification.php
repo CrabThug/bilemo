@@ -101,11 +101,6 @@ class Specification
      */
     private $network;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Phone", cascade={"persist", "remove"})
-     */
-    private $phone;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -311,18 +306,6 @@ class Specification
     public function setNetwork(string $network): self
     {
         $this->network = $network;
-
-        return $this;
-    }
-
-    public function getPhone(): ?Phone
-    {
-        return $this->phone;
-    }
-
-    public function setPhone(?Phone $phone): self
-    {
-        $this->phone = $phone;
 
         return $this;
     }

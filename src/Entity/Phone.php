@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PhoneRepository")
@@ -13,15 +14,18 @@ class Phone
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"phones_list", "phones_details"})
      */
     private $id;
 
     /**
+     * @Groups({"phones_list", "phones_details"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @Groups({"phones_list", "phones_details"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Supplier", inversedBy="phone")
      */
     private $supplier;
