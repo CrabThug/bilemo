@@ -5,3 +5,17 @@ api_platform:
         json: ['application/merge-patch+json']
     swagger:
         versions: [3]
+        api_keys:
+            apiKey:
+                name: Authorization
+                type: header
+    collection:
+        pagination:
+            items_per_page: 5
+    http_cache:
+        invalidation:
+            enabled: true
+        max_age: 0
+        shared_max_age: 3600
+        vary: ['Content-Type', 'Authorization', 'Origin']
+        public: true

@@ -1,0 +1,14 @@
+App\Entity\User:
+    collectionOperations:
+        get: # nothing more to add if we want to keep the default controller
+            normalization_context: {groups: ['users_list']}
+            security: "is_granted('ROLE_USER')"
+        post:
+            security: "is_granted('ROLE_USER')"
+            normalization_context: {groups: ['users_details']}
+    itemOperations:
+        get:
+            security: "is_granted('ROLE_USER')"
+            normalization_context: {groups: ['users_details']}
+        delete:
+            security: "is_granted('ROLE_USER')"
