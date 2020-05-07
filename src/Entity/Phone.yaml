@@ -3,4 +3,5 @@ App\Entity\Phone:
         get: # nothing more to add if we want to keep the default controller
             normalization_context: {groups: ['phones_list']}
     itemOperations:
-        get: ~
+        get:
+            normalization_context: {groups: ['phones_details']}

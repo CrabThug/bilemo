@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SpecificationRepository")
@@ -17,89 +18,99 @@ class Specification
     private $id;
 
     /**
+     * @Groups({"phones_details"})
      * @ORM\Column(type="string", length=255)
      */
     private $height;
 
     /**
+     * @Groups({"phones_details"})
      * @ORM\Column(type="string", length=255)
      */
     private $width;
 
     /**
+     * @Groups({"phones_details"})
      * @ORM\Column(type="string", length=255)
      */
     private $thick;
 
     /**
+     * @Groups({"phones_details"})
      * @ORM\Column(type="string", length=255)
      */
     private $weight;
 
     /**
+     * @Groups({"phones_details"})
      * @ORM\Column(type="string", length=255)
      */
     private $resolution;
 
     /**
+     * @Groups({"phones_details"})
      * @ORM\Column(type="string", length=255)
      */
     private $diagonal;
 
     /**
+     * @Groups({"phones_details"})
      * @ORM\Column(type="string", length=255)
      */
     private $lux;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $processor;
-
-    /**
+     * @Groups({"phones_details"})
      * @ORM\Column(type="string", length=255)
      */
     private $photo_sensor;
 
     /**
+     * @Groups({"phones_details"})
      * @ORM\Column(type="string", length=255)
      */
     private $front_photo_sensor;
 
     /**
+     * @Groups({"phones_details"})
      * @ORM\Column(type="string", length=255)
      */
     private $battery_capacity;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $os;
-
-    /**
+     * @Groups({"phones_details"})
      * @ORM\Column(type="string", length=255)
      */
     private $internal_memory;
 
     /**
+     * @Groups({"phones_details"})
      * @ORM\Column(type="string", length=255)
      */
     private $external_memory;
 
     /**
+     * @Groups({"phones_details"})
      * @ORM\Column(type="string", length=255)
      */
     private $nfc;
 
     /**
+     * @Groups({"phones_details"})
      * @ORM\Column(type="string", length=255)
      */
     private $dual_slim;
 
     /**
+     * @Groups({"phones_details"})
      * @ORM\Column(type="string", length=255)
      */
     private $network;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Phone", mappedBy="specification", cascade={"persist", "remove"})
+     */
+    private $phone;
 
     public function getId(): ?int
     {
@@ -190,18 +201,6 @@ class Specification
         return $this;
     }
 
-    public function getProcessor(): ?string
-    {
-        return $this->processor;
-    }
-
-    public function setProcessor(string $processor): self
-    {
-        $this->processor = $processor;
-
-        return $this;
-    }
-
     public function getPhotoSensor(): ?string
     {
         return $this->photo_sensor;
@@ -234,18 +233,6 @@ class Specification
     public function setBatteryCapacity(string $battery_capacity): self
     {
         $this->battery_capacity = $battery_capacity;
-
-        return $this;
-    }
-
-    public function getOs(): ?string
-    {
-        return $this->os;
-    }
-
-    public function setOs(string $os): self
-    {
-        $this->os = $os;
 
         return $this;
     }
@@ -306,6 +293,24 @@ class Specification
     public function setNetwork(string $network): self
     {
         $this->network = $network;
+
+        return $this;
+    }
+
+    public function getPhone(): ?Phone
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?Phone $phone): self
+    {
+        $this->phone = $phone;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newSpecification = null === $phone ? null : $this;
+        if ($phone->getSpecification() !== $newSpecification) {
+            $phone->setSpecification($newSpecification);
+        }
 
         return $this;
     }

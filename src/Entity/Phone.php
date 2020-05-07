@@ -30,6 +30,11 @@ class Phone
      */
     private $supplier;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Specification", inversedBy="phone", cascade={"persist", "remove"})
+     */
+    private $specification;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -55,6 +60,18 @@ class Phone
     public function setSupplier(?Supplier $supplier): self
     {
         $this->supplier = $supplier;
+
+        return $this;
+    }
+
+    public function getSpecification(): ?Specification
+    {
+        return $this->specification;
+    }
+
+    public function setSpecification(?Specification $specification): self
+    {
+        $this->specification = $specification;
 
         return $this;
     }
