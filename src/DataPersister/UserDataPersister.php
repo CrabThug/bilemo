@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\Security;
 class UserDataPersister implements ContextAwareDataPersisterInterface
 {
     private $security;
-    private EntityManagerInterface $em;
+    private $em;
 
     public function __construct(Security $security, EntityManagerInterface $em)
     {
