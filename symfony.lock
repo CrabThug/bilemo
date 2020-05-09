@@ -125,6 +125,9 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "justinrainbow/json-schema": {
+        "version": "5.2.9"
+    },
     "laminas/laminas-code": {
         "version": "3.4.1"
     },
@@ -248,9 +251,6 @@
             "bin/console",
             "config/bootstrap.php"
         ]
-    },
-    "symfony/css-selector": {
-        "version": "v5.0.8"
     },
     "symfony/debug-bundle": {
         "version": "4.1",
@@ -506,9 +506,6 @@
     },
     "symfony/string": {
         "version": "v5.0.8"
-    },
-    "symfony/test-pack": {
-        "version": "v1.0.6"
     },
     "symfony/translation": {
         "version": "3.3",
