@@ -33,7 +33,6 @@ final class UsersCollectionExtension implements QueryCollectionExtensionInterfac
     {
         $this->addWhere($queryBuilder, $resourceClass);
     }
-
     public function applyToCollection(QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, string $operationName = NULL)
     {
         $this->addWhere($queryBuilder, $resourceClass);
