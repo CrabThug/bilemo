@@ -7,7 +7,3 @@ authentication_token:
 
 docs:
     path: /api/docs
-
-index:
-    path: /
-    controller: App\Controller\IndexController::index
