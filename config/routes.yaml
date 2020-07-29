@@ -4,3 +4,10 @@
 authentication_token:
     path: /authentication_token
     methods: ['POST']
+
+docs:
+    path: /api/docs
+
+
+
+ #   "resource", "type", "prefix", "path", "host", "schemes", "methods", "defaults", "requirements", "options", "condition", "controller", "name_prefix", "trailing_slash_on_root", "locale", "format", "utf8", "exclude"
