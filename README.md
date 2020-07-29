@@ -11,7 +11,7 @@ require :
 
 2 - Update the config file .env
 
-3 - Generate SSH keys for use LexikJWTAuthenticationBundle.
+3 - Generate SSH keys for use [LexikJWTAuthenticationBundle](https://github.com/lexik/LexikJWTAuthenticationBundle/blob/master/Resources/doc/index.md#generate-the-ssh-keys).
 
 4 - `cd {folder} && composer install`
 
@@ -21,7 +21,7 @@ require :
 
 if u want use fixture, change env to dev in the config file
 
-7 - `bin/console d:f:l`
+7 - `bin/console d:f:l -n`
 
 if u want use ssl security u must use `symfony server:ca:install` before
 
