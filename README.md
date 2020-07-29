@@ -19,7 +19,7 @@ require :
 
 6 - `bin/console d:s:u --force`
 
-if u want use fixture, change env to dev in the config file
+if u want use fixture, change env to dev in the config file (env:dev)
 
 7 - `bin/console d:f:l -n`
 
