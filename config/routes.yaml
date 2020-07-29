@@ -8,6 +8,6 @@ authentication_token:
 docs:
     path: /api/docs
 
-
-
- #   "resource", "type", "prefix", "path", "host", "schemes", "methods", "defaults", "requirements", "options", "condition", "controller", "name_prefix", "trailing_slash_on_root", "locale", "format", "utf8", "exclude"
+index:
+    path: /
+    controller: App\Controller\IndexController::index
